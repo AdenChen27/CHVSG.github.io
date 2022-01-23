@@ -181,22 +181,10 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-22 19:58:06" itemprop="dateModified" datetime="2022-01-22T19:58:06+08:00">2022-01-22</time>
+                <time title="Modified: 2022-01-23 21:07:15" itemprop="dateModified" datetime="2022-01-23T21:07:15+08:00">2022-01-23</time>
               </span>
 
           
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/3000/01/01/description/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/3000/01/01/description/" itemprop="commentCount"></span>
-    </a>
-  </span>
   
   
 
@@ -210,6 +198,135 @@
 
       
           <p>学校里的女生为什么都不爱玩体育？女生的体育成绩面临什么窘境？玩体育的女生怎么才能多起来？小唐作为爱运动的女生和我们一起一探究竟。<br><a target="_blank" rel="noopener" href="https://www.chinathinksbig.com/team/245977">China Thinks Big小队主页</a></p>
+<!-- LeanCloud -->
+<script src="https://code.bdstatic.com/npm/leancloud-storage@5.0.0-beta.0/dist/browser/lc.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+
+<style>
+.stereotypes-board, li{
+  list-style:none;
+}
+.stereotypes-board{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.stereotypes-board li .sticky-note{
+  text-decoration:none;
+  color:#000;
+  background:#ffc;
+  display:block;
+  height:8em;
+  width:8em;
+  padding:1em;
+  box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
+  transform: rotate(-6deg);
+  transition: transform .15s linear;
+}
+
+.stereotypes-board li:nth-child(even) .sticky-note{
+  transform:rotate(4deg);
+  position:relative;
+  top:5px;
+}
+.stereotypes-board li:nth-child(3n) .sticky-note{
+  transform:rotate(-3deg);
+  position:relative;
+  top:-5px;
+}
+.stereotypes-board li:nth-child(5n) .sticky-note{
+  transform:rotate(5deg);
+  position:relative;
+  top:-10px;
+}
+
+.stereotypes-board li .sticky-note:hover, .stereotypes-board li .sticky-note:focus{
+  box-shadow:10px 10px 7px rgba(0, 0, 0, .7);
+  transform: scale(1.25);
+  position:relative;
+  z-index:5;
+}
+
+.stereotypes-board li{
+  margin:1em;
+}
+
+.note {
+  font-family: ‘Gabriola’;
+}
+
+.add-note-btn {
+  background: #cccccc;
+  color: #777777;
+  padding: 10px 10px;
+  border: none;
+  margin-top: 0px;
+  cursor: pointer;
+  font-size: 20em;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.25);
+  transition: 1s all;
+  font-size: 10px;
+  border-radius: 5px;
+}
+
+.add-note-btn:hover {
+  background: #aaaaaa;
+}
+
+#new-note-textarea {
+  width: 100%;
+  border: none;
+  background: #fafafa;
+  padding: 5px 10px;
+  height: 50%;
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: 2px solid #aaaaaa;
+  transition: all 0.5s;
+  margin-top: 15px;
+}
+</style>
+
+<h2 id="When-people-think-of-girls-doing-sports…"><a href="#When-people-think-of-girls-doing-sports…" class="headerlink" title="When people think of girls doing sports…"></a>When people think of girls doing sports…</h2><ul class="stereotypes-board" id="stereotypes-board">
+</ul>
+<script>
+const appId = "q4AttDSzXf1gAdfHR6VEU3WE-gzGzoHsz";
+const appKey = "EtNorGzdd9ExWdpsxVTDbpGm";
+const serverURL = "https://q4attdsz.lc-cn-n1-shared.com";
+LC.init({ appId, appKey, serverURL });
+const context = {
+    stereotypes: [],
+};
+var board = document.getElementById("stereotypes-board");
+function get_randome_color() {
+  var colors = ["#cff", "#fcf", "#ffc", "#fcc", "#cfc", "ccf"];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+function paste_note(text) {
+  var li_note_holder = document.createElement("li");
+  var div_note_holder = document.createElement("div");
+  div_note_holder.className += "sticky-note";
+  div_note_holder.style.backgroundColor = get_randome_color();
+  // div_note_holder.style.top = Math.floor(Math.random()*20 + 10); + "px";
+  var p_note_text = document.createElement("p");
+  p_note_text.className += "note-text";
+  p_note_text.innerHTML = text;
+  div_note_holder.appendChild(p_note_text);
+  li_note_holder.appendChild(div_note_holder);
+  board.appendChild(li_note_holder);
+}
+function add_note() {
+  var textarea = document.getElementById("new-note-textarea");
+  LC.CLASS("stereotype").add({text: textarea.value});
+  paste_note(textarea.value);
+}
+</script>
+<script src="../../../../js/load_board.js"></script>
+<div class="row">
+    <textarea type="text" class="input" id="new-note-textarea" placeholder="Write a comment"></textarea>
+    <button onclick="add_note()" class="add-note-btn" ctype="submit">Add Comment</button>
+</div>
+<!-- browserify source/js/_board.js -o source/js/board.js -->
 
       
     </div>
